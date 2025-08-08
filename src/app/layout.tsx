@@ -8,7 +8,7 @@ import {
   SidebarProvider,
 } from "@/components/ui/sidebar"
 import { Footer } from "@/components/layout/footer";
-import { ConvexClientProvider } from "../../convex/ConvexClientProvider";
+import { ConvexClientProvider } from "./ConvexClientProvider";
 
 export const iframeHeight = "800px"
 
