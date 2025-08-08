@@ -1,13 +1,15 @@
-import { AppSidebar } from "@/components/app-sidebar"
-import { SiteHeader } from "@/components/site-header"
-import {
-  SidebarInset,
-  SidebarProvider,
-} from "@/components/ui/sidebar"
+import type { Metadata } from "next";
+import { AppSidebar } from "@/components/app-sidebar";
+import { SiteHeader } from "@/components/site-header";
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 
-export const iframeHeight = "800px"
+export const metadata: Metadata = {
+  title: "Dashboard",
+  description: "A sidebar with a header and a search form.",
+};
 
-export const description = "A sidebar with a header and a search form."
+// Si lo necesitas, úsalo como const local (¡sin export!).
+const iframeHeight = "800px";
 
 export default function Page() {
   return (
@@ -29,5 +31,5 @@ export default function Page() {
         </div>
       </SidebarProvider>
     </div>
-  )
+  );
 }
