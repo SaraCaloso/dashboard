@@ -1,4 +1,6 @@
 "use client"
+import Link from "next/link"; // Asegúrate de tener esto arriba del archivo
+
 
 import * as React from "react"
 import {
@@ -151,15 +153,15 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
-              <a href="/">
-                <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
-                  <Command className="size-4" />
-                </div>
-                <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-medium">Mi Escuela</span>
-                  <span className="truncate text-xs">Sistema</span>
-                </div>
-              </a>
+              <Link href="/" className="flex items-center space-x-2">
+  <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
+    <Command className="size-4" />
+  </div>
+  <div className="grid flex-1 text-left text-sm leading-tight">
+    <span className="truncate font-medium">Mi Escuela</span>
+    <span className="truncate text-xs">Sistema</span>
+  </div>
+</Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
