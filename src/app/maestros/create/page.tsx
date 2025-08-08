@@ -4,24 +4,24 @@ import { useState } from "react";
 import { useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { useRouter } from "next/navigation";
-import { Button } from "@/app/components/ui/button";
-import { Input } from "@/app/components/ui/input";
-import { Label } from "@/app/components/ui/label";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
     Card,
     CardContent,
     CardFooter,
     CardHeader,
     CardTitle,
-} from "@/app/components/ui/card";
+} from "@/components/ui/card";
 import { ArrowLeft } from "lucide-react";
 
-export default function CrearEstudiantePage() {
+export default function CrearMaestroPage() {
     const router = useRouter();
-    const crearEstudiante = useMutation(api.estudiantes.crearEstudiante);
+    const crearMaestro = useMutation(api.maestros.crearMaestro);
 
     const [formData, setFormData] = useState({
-        numMatricula: "",
+        numEmpleado: "",
         nombre: "",
         correo: "",
     });
@@ -38,10 +38,10 @@ export default function CrearEstudiantePage() {
         setIsSubmitting(true);
 
         try {
-            await crearEstudiante(formData);
-            router.push("/estudiantes");
+            await crearMaestro(formData);
+            router.push("/maestros");
         } catch (error) {
-            console.error("Error al crear estudiante:", error);
+            console.error("Error al crear maestro:", error);
         } finally {
             setIsSubmitting(false);
         }
@@ -55,7 +55,7 @@ export default function CrearEstudiantePage() {
                         <ArrowLeft className="h-4 w-4" />
                     </Button>
                     <h1 className="text-2xl sm:text-3xl font-bold">
-                        Crear Nuevo Estudiante
+                        Crear Nuevo Maestro
                     </h1>
                 </div>
             </div>
@@ -63,16 +63,16 @@ export default function CrearEstudiantePage() {
             <Card className="w-full max-w-2xl mx-auto">
                 <form onSubmit={handleSubmit}>
                     <CardHeader>
-                        <CardTitle className="font-semibold text-center">Información del Estudiante</CardTitle>
+                        <CardTitle className="font-semibold text-center">Información del Maestro</CardTitle>
                     </CardHeader>
 
                     <CardContent className="grid grid-cols-1 gap-6">
                         <div className="grid gap-2">
-                            <Label htmlFor="numMatricula">Número de Matrícula</Label>
+                            <Label htmlFor="numEmpleado">Número de Empleado</Label>
                             <Input
-                                id="numMatricula"
-                                name="numMatricula"
-                                value={formData.numMatricula}
+                                id="numEmpleado"
+                                name="numEmpleado"
+                                value={formData.numEmpleado}
                                 onChange={handleChange}
                                 placeholder="Ej: A12345"
                                 required
@@ -86,7 +86,7 @@ export default function CrearEstudiantePage() {
                                 name="nombre"
                                 value={formData.nombre}
                                 onChange={handleChange}
-                                placeholder="Nombre del estudiante"
+                                placeholder="Nombre del maestro"
                                 required
                             />
                         </div>
@@ -120,7 +120,7 @@ export default function CrearEstudiantePage() {
                             disabled={isSubmitting}
                             className="w-full sm:w-auto"
                         >
-                            {isSubmitting ? "Creando..." : "Crear Estudiante"}
+                            {isSubmitting ? "Creando..." : "Crear Maestro"}
                         </Button>
                     </CardFooter>
                 </form>
